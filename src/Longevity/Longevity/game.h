@@ -7,6 +7,7 @@ class Game {
 public:
 	Game();
 	~Game();
+	sf::RenderWindow* GetWindow();
 	void ProcessInput();
 	void Update();
 	void Render(sf::RenderWindow *window);

@@ -7,16 +7,17 @@ int main()
 
 	Game game;
 	sf::Clock clock;
-	sf::RenderWindow window(sf::VideoMode(200, 200), "Longevity");
+	sf::RenderWindow* window = game.GetWindow();
 
 	double previous_time = clock.getElapsedTime().asMilliseconds();
 	double lag = 0.0;
 
-	while (window.isOpen()) {
+	while (window->isOpen()) {
 		sf::Event event;
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
-				window.close();
+		while (window->pollEvent(event)) {
+			if (event.type == sf::Event::Closed) {
+				window->close();
+			}
 		}
 
 		double current_time = clock.getElapsedTime().asMilliseconds();
@@ -31,6 +32,8 @@ int main()
 			lag -= MillisecondsPerUpdate;
 		}
 
-		game.Render(&window);
+		game.Render(window);
 	}
+
+	delete window;
 }

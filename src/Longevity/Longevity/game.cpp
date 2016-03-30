@@ -10,6 +10,11 @@ Game::~Game() {
 
 }
 
+sf::RenderWindow* Game::GetWindow() {
+	sf::RenderWindow window(sf::VideoMode(320, 200), "Longevity");
+	return &window;
+}
+
 void Game::ProcessInput() {
 
 }
@@ -19,7 +24,7 @@ void Game::Update() {
 	circle_.setRadius(circle_radius_);
 }
 
-void Game::Render(sf::RenderWindow *window) {	
+void Game::Render(sf::RenderWindow *window) {
 	window->clear();
 	window->draw(circle_);
 	window->display();
