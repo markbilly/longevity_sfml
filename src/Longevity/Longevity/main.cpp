@@ -5,18 +5,18 @@ int main()
 {
 	const int MillisecondsPerUpdate = 16;
 
-	Game game;
 	sf::Clock clock;
-	sf::RenderWindow window(sf::VideoMode(200, 200), "Longevity");
+	Game *game = new Game();
+	sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(200, 200), "Longevity");
 
 	double previous_time = clock.getElapsedTime().asMilliseconds();
 	double lag = 0.0;
 
-	while (window.isOpen()) {
+	while (window->isOpen()) {
 		sf::Event event;
-		while (window.pollEvent(event)) {
+		while (window->pollEvent(event)) {
 			if (event.type == sf::Event::Closed)
-				window.close();
+				window->close();
 		}
 
 		double current_time = clock.getElapsedTime().asMilliseconds();
@@ -24,13 +24,13 @@ int main()
 		previous_time = current_time;
 		lag += elapsed_time;
 
-		game.ProcessInput();
+		game->ProcessInput();
 
 		while (lag >= MillisecondsPerUpdate) {
-			game.Update();
+			game->Update();
 			lag -= MillisecondsPerUpdate;
 		}
 
-		game.Render(&window);
+		game->Render(window);
 	}
 }
