@@ -11,5 +11,5 @@ Tile::~Tile() {
 }
 
 sf::Sprite* Tile::GetSprite() {
-
+	return &sprite_;
 }
