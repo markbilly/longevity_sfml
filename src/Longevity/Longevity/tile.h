@@ -5,11 +5,10 @@
 
 class Tile {
 public:
-	Tile(std::string fileName);
+	Tile();
 	~Tile();
-	sf::Sprite* GetSprite();
+	sf::Sprite GetSprite(std::string image);
 private:
-	sf::Texture sprite_texture_;
 	sf::Sprite sprite_;
 };
 

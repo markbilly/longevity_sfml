@@ -32,8 +32,6 @@ int main()
 			lag -= MillisecondsPerUpdate;
 		}
 
-		game.Render(window);
+		game.Render();
 	}
-
-	delete window;
 }
