@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "tile.h"
+#include "texture_factory.h"
 
 class Game {
 public:
@@ -13,11 +14,10 @@ public:
 	void Update();
 	void Render();
 private:
-	float circle_radius_;
-	sf::CircleShape circle_;
 	Tile tile_;
 	sf::RenderWindow* window_;
-	std::vector<sf::Texture*>* textures_;
+	TextureFactory* texture_factory_;
+	sf::Texture* tile_texture_;
 };
 
 #endif
