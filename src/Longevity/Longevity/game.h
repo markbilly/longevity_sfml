@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "texture_factory.h"
+#include "scene.h"
 
 class Game {
 public:
@@ -15,7 +16,7 @@ public:
 private:
 	sf::RenderWindow* window_;
 	TextureFactory* texture_factory_;
-	std::vector<sf::Texture*>* tile_textures_;
+	Scene* scene_;
 };
 
 #endif
