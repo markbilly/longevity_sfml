@@ -17,7 +17,7 @@ private:
 	Tile tile_;
 	sf::RenderWindow* window_;
 	TextureFactory* texture_factory_;
-	sf::Texture* tile_texture_;
+	std::vector<sf::Texture*>* tile_textures_;
 };
 
 #endif
