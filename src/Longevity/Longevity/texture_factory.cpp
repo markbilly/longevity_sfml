@@ -2,7 +2,7 @@
 
 TextureFactory::TextureFactory() {
 	textures_ = new std::map<std::string, sf::Texture*>();
-	map_ = new std::map<std::string, std::string>();
+	resource_map_ = new std::map<std::string, std::string>();
 }
 
 TextureFactory::~TextureFactory() {
@@ -27,13 +27,13 @@ sf::Texture* TextureFactory::CreateTexture(std::string code) {
 }
 
 void TextureFactory::RegisterTexture(std::string code, std::string fileName) {
-	map_->insert(std::pair<std::string, std::string>(code, fileName));
+	resource_map_->insert(std::pair<std::string, std::string>(code, fileName));
 }
 
 std::string TextureFactory::GetFileNameFromMap(std::string code) {
 	// check for file name
-	std::map<std::string, std::string>::iterator iterator = map_->find(code);
-	if (iterator != map_->end()) {
+	std::map<std::string, std::string>::iterator iterator = resource_map_->find(code);
+	if (iterator != resource_map_->end()) {
 		// found
 		return iterator->second;
 	}

@@ -11,7 +11,7 @@ public:
 	void RegisterTexture(std::string code, std::string fileName);
 private:
 	std::map<std::string, sf::Texture*>* textures_;
-	std::map<std::string, std::string>* map_;
+	std::map<std::string, std::string>* resource_map_;
 	std::string GetFileNameFromMap(std::string code);
 };
 

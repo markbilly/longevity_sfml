@@ -5,7 +5,7 @@ Game::Game() {
 	texture_factory_ = new TextureFactory();
 	texture_factory_->RegisterTexture("test", "test.png");
 
-	scene_ = new Scene(texture_factory_);
+	scene_ = new Scene(texture_factory_, "test_map.txt");
 }
 
 Game::~Game() {

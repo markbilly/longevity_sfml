@@ -6,7 +6,7 @@
 
 class Scene {
 public:
-	Scene(TextureFactory* texture_factory);
+	Scene(TextureFactory* texture_factory, std::string map_file_name);
 	~Scene();
 	void Render(sf::RenderWindow* window);
 private:
