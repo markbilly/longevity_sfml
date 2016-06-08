@@ -1,31 +1,17 @@
 #include "scene.h"
-#include "map_loader.h"
 
-Scene::Scene(TextureFactory* texture_factory, std::string map_file_name)
-{
+Scene::Scene(TextureFactory* texture_factory) {
 	texture_factory_ = texture_factory;
-
-	//tile_map_ = new std::vector<std::vector<int>*>();
-	//// 20 x 15 map
-	//for (int row = 0; row < 15; row++) {
-	//	std::vector<int>* new_row = new std::vector<int>();
-	//	for (int col = 0; col < 20; col++) {
-	//		new_row->push_back(1);
-	//	}
-	//	tile_map_->push_back(new_row);
-	//}
-
-	MapLoader map_loader = MapLoader();
-	tile_map_ = map_loader.Load(map_file_name); // TODO: what happens if the file is not found?
+	attributes_ = new std::map<std::string, std::string>();
 }
 
-Scene::~Scene()
-{
+Scene::~Scene() {
 	delete tile_map_;
+	delete texture_factory_;
+	delete attributes_;
 }
 
-void Scene::Render(sf::RenderWindow* window)
-{
+void Scene::Render(sf::RenderWindow* window) {
 	int total_rows = tile_map_->size();
 	int total_cols = tile_map_->at(0)->size();
 	int pos[2] = { 0, 0 };
@@ -44,5 +30,22 @@ void Scene::Render(sf::RenderWindow* window)
 		}
 		pos[0] = 0;
 		pos[1] += 16;
+	}
+}
+
+std::map<std::string, std::string>* Scene::GetAttributes() {
+	return attributes_;
+}
+
+void Scene::SetTileMap(std::vector<std::vector<int>*>* tile_map) {
+	tile_map_ = tile_map;
+}
+
+void Scene::AddAttribute(std::string key, std::string value) {
+	// check for attribute
+	std::map<std::string, std::string>::iterator iterator = attributes_->find(key);
+	if (iterator == attributes_->end()) {
+		// add if not found
+		attributes_->insert(std::pair<std::string, std::string>(key, value));
 	}
 }

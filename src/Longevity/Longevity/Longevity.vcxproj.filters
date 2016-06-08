@@ -27,7 +27,7 @@
     <ClCompile Include="scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="map_loader.cpp">
+    <ClCompile Include="scene_loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="map_loader.h">
+    <ClInclude Include="scene_loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

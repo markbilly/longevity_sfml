@@ -16,7 +16,7 @@ sf::Texture* TextureFactory::CreateTexture(std::string code) {
 	if (iterator == textures_->end()) {
 		// not found
 		sf::Texture* new_texture = new sf::Texture();
-		new_texture->loadFromFile(GetFileNameFromMap(code));
+		new_texture->loadFromFile(GetFileNameFromMap(code)); // TODO: what if code does not get a file name
 		textures_->insert(std::pair<std::string, sf::Texture*>(code, new_texture));
 		return new_texture;
 	}

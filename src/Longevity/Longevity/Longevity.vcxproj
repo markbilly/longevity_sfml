@@ -160,13 +160,13 @@
   <ItemGroup>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="map_loader.cpp" />
+    <ClCompile Include="scene_loader.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="texture_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
-    <ClInclude Include="map_loader.h" />
+    <ClInclude Include="scene_loader.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="texture_factory.h" />
   </ItemGroup>
