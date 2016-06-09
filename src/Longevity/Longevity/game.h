@@ -14,6 +14,7 @@ public:
 	void Update();
 	void Render();
 private:
+	sf::View* view_;
 	sf::RenderWindow* window_;
 	TextureFactory* texture_factory_;
 	Scene* scene_;
