@@ -18,6 +18,9 @@ private:
 	sf::RenderWindow* window_;
 	TextureFactory* texture_factory_;
 	Scene* scene_;
+
+	int offset_x_;
+	int offset_y_;
 };
 
 #endif

@@ -13,13 +13,6 @@ int main()
 	double lag = 0.0;
 
 	while (window->isOpen()) {
-		sf::Event event;
-		while (window->pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
-				window->close();
-			}
-		}
-
 		double current_time = clock.getElapsedTime().asMilliseconds();
 		double elapsed_time = current_time - previous_time;
 		previous_time = current_time;
