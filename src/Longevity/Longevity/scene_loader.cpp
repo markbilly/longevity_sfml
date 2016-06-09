@@ -16,14 +16,15 @@ void SceneLoader::Load(std::string file_name, Scene& scene) {
 	file.open(file_name);
 
 	std::string line;
+	int line_number = 1;
 	while (std::getline(file, line)) {
-		if (line[0] == 's') {
-			Attribute attribute = GetAttribute(line);
-			scene.AddAttribute(attribute.key, attribute.value);
+		if (line_number <= kNumberOfSceneAttributes) {
+			scene.AddAttribute(GetAttribute(line));
 		}
 		else {
 			map->push_back(GetTileMapRow(line));
 		}
+		line_number++;
 	}
 
 	scene.SetTileMap(map);
@@ -42,12 +43,12 @@ std::vector<int>* SceneLoader::GetTileMapRow(std::string line) {
 	return row_of_codes;
 }
 
-Attribute SceneLoader::GetAttribute(std::string line) {		
+std::pair<std::string, std::string> SceneLoader::GetAttribute(std::string line) {
 	std::string attribute_key = "";
 	std::string attribute_value = "";
 	bool value = false;
 
-	for (std::size_t i = 2; i < line.length(); i++) {
+	for (std::size_t i = 0; i < line.length(); i++) {
 		if (line[i] == ':') {
 			value = true;
 			continue;
@@ -61,6 +62,6 @@ Attribute SceneLoader::GetAttribute(std::string line) {
 		}
 	}
 
-	Attribute attribute = { attribute_key, attribute_value };
+	std::pair<std::string, std::string> attribute(attribute_key, attribute_value);
 	return attribute;
 }

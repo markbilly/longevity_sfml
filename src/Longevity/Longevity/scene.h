@@ -11,7 +11,7 @@ public:
 	void Render(sf::RenderWindow* window);
 	std::map<std::string, std::string>* GetAttributes();
 	void SetTileMap(std::vector<std::vector<int>*>* tile_map);
-	void AddAttribute(std::string key, std::string value);
+	void AddAttribute(std::pair<std::string, std::string> key_value_pair);
 private:
 	std::vector<std::vector<int>*>* tile_map_;
 	TextureFactory* texture_factory_;

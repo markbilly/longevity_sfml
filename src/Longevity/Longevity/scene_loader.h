@@ -4,10 +4,10 @@
 #include <vector>
 #include "scene.h"
 
-struct Attribute {
-	std::string key;
-	std::string value;
-};
+//struct Attribute {
+//	std::string key;
+//	std::string value;
+//};
 
 class SceneLoader {
 public:
@@ -15,8 +15,9 @@ public:
 	~SceneLoader();
 	void Load(std::string file_name, Scene& scene);
 private:
+	const static int kNumberOfSceneAttributes = 2;
 	std::vector<int>* SceneLoader::GetTileMapRow(std::string line);
-	Attribute GetAttribute(std::string line);
+	std::pair<std::string, std::string> GetAttribute(std::string line);
 };
 
 #endif

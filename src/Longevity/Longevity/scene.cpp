@@ -20,7 +20,7 @@ void Scene::Render(sf::RenderWindow* window) {
 		for (int col = 0; col < total_cols; col++) {
 			sf::Texture texture = *texture_factory_->CreateTexture("test");
 			sf::Sprite sprite(texture);
-			sprite.setPosition(pos[0], pos[1]);
+			sprite.setPosition((float)pos[0], (float)pos[1]);
 
 			if (tile_map_->at(row)->at(col) > 0) {
 				window->draw(sprite);
@@ -41,11 +41,11 @@ void Scene::SetTileMap(std::vector<std::vector<int>*>* tile_map) {
 	tile_map_ = tile_map;
 }
 
-void Scene::AddAttribute(std::string key, std::string value) {
+void Scene::AddAttribute(std::pair<std::string, std::string> key_value_pair) {
 	// check for attribute
-	std::map<std::string, std::string>::iterator iterator = attributes_->find(key);
+	std::map<std::string, std::string>::iterator iterator = attributes_->find(key_value_pair.first);
 	if (iterator == attributes_->end()) {
 		// add if not found
-		attributes_->insert(std::pair<std::string, std::string>(key, value));
+		attributes_->insert(key_value_pair);
 	}
 }
