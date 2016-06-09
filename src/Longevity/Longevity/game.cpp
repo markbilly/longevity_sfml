@@ -2,10 +2,8 @@
 #include "scene_loader.h"
 
 Game::Game() {
-	window_ = new sf::RenderWindow(sf::VideoMode(640, 480), "Longevity"); // change window size to scale
-	
-	view_ = new sf::View(sf::FloatRect(0, 0, 320, 240)); // view size is 1:1 scale
-	window_->setView(*view_);
+	window_ = new sf::RenderWindow(sf::VideoMode(640, 480), "Longevity"); // change window size to scale	
+	camera_ = new Camera(window_, sf::FloatRect(0, 0, 320, 240));  // view size is 1:1 scale
 
 	texture_factory_ = new TextureFactory();
 	texture_factory_->RegisterTexture("test", "test.png");
@@ -16,7 +14,7 @@ Game::Game() {
 }
 
 Game::~Game() {
-	delete view_;
+	delete camera_;
 	delete window_;
 	delete scene_;
 	delete texture_factory_;
@@ -55,8 +53,9 @@ void Game::ProcessInput() {
 }
 
 void Game::Update() {
-	window_->setView(*view_);
-	view_->move(offset_x_, offset_y_);
+	if (offset_x_ != 0 || offset_y_ != 0) {
+		camera_->Move(offset_x_, offset_y_);
+	}
 
 	offset_x_ = 0;
 	offset_y_ = 0;

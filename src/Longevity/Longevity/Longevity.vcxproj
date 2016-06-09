@@ -158,6 +158,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="scene_loader.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="texture_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="scene_loader.h" />
     <ClInclude Include="scene.h" />

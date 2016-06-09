@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "texture_factory.h"
 #include "scene.h"
+#include "camera.h"
 
 class Game {
 public:
@@ -14,7 +15,7 @@ public:
 	void Update();
 	void Render();
 private:
-	sf::View* view_;
+	Camera* camera_;
 	sf::RenderWindow* window_;
 	TextureFactory* texture_factory_;
 	Scene* scene_;
