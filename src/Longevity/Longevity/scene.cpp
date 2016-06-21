@@ -48,3 +48,14 @@ void Scene::AddAttribute(std::pair<std::string, std::string> key_value_pair) {
 		attributes_->insert(key_value_pair);
 	}
 }
+
+sf::IntRect Scene::GetSizeInPixels() {
+	if (tile_map_ == nullptr) {
+		return sf::IntRect(0, 0, 0, 0);
+	}
+
+	int height = tile_map_->size() * 16;
+	int width = tile_map_->at(0)->size() * 16;
+
+	return sf::IntRect(0, 0, width, height);
+}

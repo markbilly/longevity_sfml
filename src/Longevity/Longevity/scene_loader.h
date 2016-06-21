@@ -4,11 +4,6 @@
 #include <vector>
 #include "scene.h"
 
-//struct Attribute {
-//	std::string key;
-//	std::string value;
-//};
-
 class SceneLoader {
 public:
 	SceneLoader();

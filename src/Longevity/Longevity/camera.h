@@ -5,14 +5,14 @@
 
 class Camera {
 public:
-	Camera(sf::RenderWindow* window, sf::FloatRect view_size);
+	Camera(sf::RenderWindow* window, sf::IntRect view_size);
 	~Camera();
-	void SetBoundary(sf::FloatRect boundary);
-	void Move(float offset_x, float offset_y);
+	void SetBoundary(int width, int height);
+	void Move(int offset_x, int offset_y);
 private:
 	sf::View* view_;
 	sf::RenderWindow* window_;
-	sf::FloatRect* boundary_;
+	sf::IntRect* boundary_;
 };
 
 #endif

@@ -3,14 +3,17 @@
 
 Game::Game() {
 	window_ = new sf::RenderWindow(sf::VideoMode(640, 480), "Longevity"); // change window size to scale	
-	camera_ = new Camera(window_, sf::FloatRect(0, 0, 320, 240));  // view size is 1:1 scale
+	camera_ = new Camera(window_, sf::IntRect(0, 0, 320, 240));  // view size is 1:1 scale
 
 	texture_factory_ = new TextureFactory();
 	texture_factory_->RegisterTexture("test", "test.png");
 
+	// Set up scene
 	scene_ = new Scene(texture_factory_);
 	SceneLoader scene_loader = SceneLoader();
 	scene_loader.Load("test_map.txt", *scene_);
+	sf::IntRect scene_size = scene_->GetSizeInPixels();
+	camera_->SetBoundary(scene_size.width, scene_size.height);
 }
 
 Game::~Game() {
@@ -63,8 +66,6 @@ void Game::Update() {
 
 void Game::Render() {
 	window_->clear();
-
 	scene_->Render(window_);
-
 	window_->display();
 }
