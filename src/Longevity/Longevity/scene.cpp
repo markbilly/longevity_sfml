@@ -7,7 +7,6 @@ Scene::Scene(TextureFactory* texture_factory) {
 
 Scene::~Scene() {
 	delete tile_map_;
-	delete texture_factory_;
 	delete attributes_;
 }
 

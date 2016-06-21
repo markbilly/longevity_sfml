@@ -9,7 +9,6 @@ Camera::Camera(sf::RenderWindow* window, sf::FloatRect view_size) {
 
 Camera::~Camera() {
 	delete boundary_;
-	delete window_;
 }
 
 void Camera::SetBoundary(sf::FloatRect boundary) {
