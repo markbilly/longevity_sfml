@@ -13,6 +13,7 @@ private:
 	sf::View* view_;
 	sf::RenderWindow* window_;
 	sf::IntRect* boundary_;
+	sf::Vector2f Camera::GetAdjustedEndWithinBoundary(sf::Vector2f start, sf::Vector2f end);
 };
 
 #endif
