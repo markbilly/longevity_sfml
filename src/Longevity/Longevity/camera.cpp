@@ -20,18 +20,20 @@ void Camera::Move(int offset_x, int offset_y) {
 	window_->setView(*view_);
 
 	sf::Vector2f centre = view_->getCenter();
+	sf::Vector2f new_centre = centre + sf::Vector2f(offset_x, offset_y);
 	sf::Vector2f view_size = view_->getSize();
 
-	int distance_to_edge_x = boundary_->width - ((int)view_size.x / 2) - (int)centre.x - offset_x;
-	int distance_to_edge_y = boundary_->height - ((int)view_size.y / 2) - (int)centre.y - offset_y;
+	int min_centre_for_boundary_x = ((int)view_size.x / 2);
+	int max_centre_for_boundary_x = boundary_->width - ((int)view_size.x / 2);
 
-	// TODO: deal with negative offsets
+	int min_centre_for_boundary_y = ((int)view_size.y / 2);
+	int max_centre_for_boundary_y = boundary_->height - ((int)view_size.y / 2);
 
-	if (distance_to_edge_x <= 0) {
+	if (new_centre.x > max_centre_for_boundary_x || new_centre.x < min_centre_for_boundary_x) {
 		offset_x = 0;
 	}
 
-	if (distance_to_edge_y <= 0) {
+	if (new_centre.y > max_centre_for_boundary_y || new_centre.y < min_centre_for_boundary_y) {
 		offset_y = 0;
 	}
 
