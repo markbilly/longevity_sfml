@@ -14,6 +14,7 @@ public:
 	void ProcessInput();
 	void Update();
 	void Render();
+	void SetFps(int fps);
 private:
 	Camera* camera_;
 	sf::RenderWindow* window_;
@@ -22,6 +23,9 @@ private:
 
 	int offset_x_;
 	int offset_y_;
+
+	int fps_;
+	void RenderFpsText();
 };
 
 #endif
