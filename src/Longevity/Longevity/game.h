@@ -5,6 +5,7 @@
 #include "texture_factory.h"
 #include "scene.h"
 #include "camera.h"
+#include "input_handler.h"
 
 class Game {
 public:
@@ -16,6 +17,7 @@ public:
 	void Render();
 	void SetFps(int fps);
 private:
+	InputHandler* input_handler_;
 	Camera* camera_;
 	sf::RenderWindow* window_;
 	TextureFactory* texture_factory_;

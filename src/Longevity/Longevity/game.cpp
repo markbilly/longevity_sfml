@@ -6,6 +6,7 @@ Game::Game() {
 
 	window_ = new sf::RenderWindow(sf::VideoMode(640, 480), "Longevity"); // change window size to scale	
 	camera_ = new Camera(window_, sf::IntRect(0, 0, 320, 240));  // view size is 1:1 scale
+	input_handler_ = new InputHandler(window_, camera_);
 
 	texture_factory_ = new TextureFactory();
 	texture_factory_->RegisterTexture("test", "test.png");
@@ -30,31 +31,34 @@ sf::RenderWindow* Game::GetWindow() {
 }
 
 void Game::ProcessInput() {
-	sf::Event event;
 
-	while (window_->pollEvent(event)) {
-		if (event.type == sf::Event::Closed) {
-			window_->close();
-		}
+	input_handler_->HandleInput();
 
-		if (event.type == sf::Event::KeyPressed) {
-			if (event.key.code == sf::Keyboard::W) {
-				offset_y_  = -1;
-			}
+	//sf::Event event;
 
-			if (event.key.code == sf::Keyboard::A) {
-				offset_x_ = -1;
-			}
+	//while (window_->pollEvent(event)) {
+	//	if (event.type == sf::Event::Closed) {
+	//		window_->close();
+	//	}
 
-			if (event.key.code == sf::Keyboard::S) {
-				offset_y_ = 1;
-			}
+	//	if (event.type == sf::Event::KeyPressed) {
+	//		if (event.key.code == sf::Keyboard::W) {
+	//			offset_y_  = -1;
+	//		}
 
-			if (event.key.code == sf::Keyboard::D) {
-				offset_x_ = 1;
-			}
-		}
-	}
+	//		if (event.key.code == sf::Keyboard::A) {
+	//			offset_x_ = -1;
+	//		}
+
+	//		if (event.key.code == sf::Keyboard::S) {
+	//			offset_y_ = 1;
+	//		}
+
+	//		if (event.key.code == sf::Keyboard::D) {
+	//			offset_x_ = 1;
+	//		}
+	//	}
+	//}
 }
 
 void Game::Update() {

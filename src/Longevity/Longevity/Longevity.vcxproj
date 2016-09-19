@@ -160,16 +160,21 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="input_handler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="scene_loader.cpp" />
     <ClCompile Include="scene.cpp" />
+    <ClCompile Include="test_command.cpp" />
     <ClCompile Include="texture_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
+    <ClInclude Include="command.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="input_handler.h" />
     <ClInclude Include="scene_loader.h" />
     <ClInclude Include="scene.h" />
+    <ClInclude Include="test_command.h" />
     <ClInclude Include="texture_factory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
