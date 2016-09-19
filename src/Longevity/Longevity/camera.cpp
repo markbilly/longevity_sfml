@@ -4,8 +4,6 @@ Camera::Camera(sf::RenderWindow* window, sf::IntRect view_size) {
 	window_ = window;
 	view_ = new sf::View(sf::FloatRect(view_size));
 	SetBoundary(view_size.width, view_size.height);
-
-	Move(0, 0);
 }
 
 Camera::~Camera() {
@@ -16,14 +14,20 @@ void Camera::SetBoundary(int width, int height) {
 	boundary_ = new sf::IntRect(0, 0, width, height);
 }
 
-void Camera::Move(int offset_x, int offset_y) {
-	window_->setView(*view_);
+void Camera::Update() {
+	if (target_ != nullptr) {
+		window_->setView(*view_);
 
-	sf::Vector2f center = view_->getCenter();
-	sf::Vector2f center_after_move = center + sf::Vector2f((float)offset_x, (float)offset_y);
+		sf::Vector2f camera_center = view_->getCenter();
+		sf::Vector2f target_center = target_->GetPosition();
 
-	sf::Vector2f new_center = GetAdjustedEndWithinBoundary(center, center_after_move);
-	view_->setCenter(new_center);
+		sf::Vector2f new_camera_center = GetAdjustedEndWithinBoundary(camera_center, target_center);
+		view_->setCenter(new_camera_center);
+	}
+}
+
+void Camera::SetTarget(Entity * target) {
+	target_ = target;
 }
 
 sf::Vector2f Camera::GetAdjustedEndWithinBoundary(sf::Vector2f start, sf::Vector2f end) {

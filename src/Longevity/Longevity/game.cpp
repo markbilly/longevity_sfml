@@ -6,8 +6,12 @@ Game::Game() {
 
 	window_ = new sf::RenderWindow(sf::VideoMode(640, 480), "Longevity"); // change window size to scale	
 	camera_ = new Camera(window_, sf::IntRect(0, 0, 320, 240));  // view size is 1:1 scale
-	input_handler_ = new InputHandler(window_, camera_);
+	input_handler_ = new InputHandler(window_, &player_);
 
+	// Set up camera
+	camera_->SetTarget(&player_);
+
+	// Register textures
 	texture_factory_ = new TextureFactory();
 	texture_factory_->RegisterTexture("test", "test.png");
 
@@ -31,48 +35,17 @@ sf::RenderWindow* Game::GetWindow() {
 }
 
 void Game::ProcessInput() {
-
 	input_handler_->HandleInput();
-
-	//sf::Event event;
-
-	//while (window_->pollEvent(event)) {
-	//	if (event.type == sf::Event::Closed) {
-	//		window_->close();
-	//	}
-
-	//	if (event.type == sf::Event::KeyPressed) {
-	//		if (event.key.code == sf::Keyboard::W) {
-	//			offset_y_  = -1;
-	//		}
-
-	//		if (event.key.code == sf::Keyboard::A) {
-	//			offset_x_ = -1;
-	//		}
-
-	//		if (event.key.code == sf::Keyboard::S) {
-	//			offset_y_ = 1;
-	//		}
-
-	//		if (event.key.code == sf::Keyboard::D) {
-	//			offset_x_ = 1;
-	//		}
-	//	}
-	//}
 }
 
 void Game::Update() {
-	if (offset_x_ != 0 || offset_y_ != 0) {
-		camera_->Move(offset_x_, offset_y_);
-	}
-
-	offset_x_ = 0;
-	offset_y_ = 0;
+	camera_->Update();
 }
 
 void Game::Render() {
 	window_->clear();
 	scene_->Render(window_);
+	player_.Render(window_);
 
 #ifdef _DEBUG
 	RenderFpsText();

@@ -1,12 +1,12 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include "camera.h"
+#include "entity.h"
 
 class Command {
 public:
 	virtual ~Command() {}
-	virtual void Execute(Camera& camera) = 0;
+	virtual void Execute(Entity& entity) = 0;
 };
 
 #endif

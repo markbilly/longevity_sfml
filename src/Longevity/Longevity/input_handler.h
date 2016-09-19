@@ -3,16 +3,16 @@
 
 #include <SFML/Graphics.hpp>
 #include "command.h"
-#include "camera.h"
+#include "player.h"
 
 class InputHandler {
 public:
-	InputHandler(sf::RenderWindow* window, Camera* camera);
+	InputHandler(sf::RenderWindow* window, Player* player);
 	~InputHandler();
 	void HandleInput();
 private:
 	sf::RenderWindow* window_;
-	Camera* camera_;
+	Player* player_;
 
 	Command* move_up_;
 	Command* move_left_;

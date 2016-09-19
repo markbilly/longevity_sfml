@@ -6,6 +6,7 @@
 #include "scene.h"
 #include "camera.h"
 #include "input_handler.h"
+#include "player.h"
 
 class Game {
 public:
@@ -22,6 +23,8 @@ private:
 	sf::RenderWindow* window_;
 	TextureFactory* texture_factory_;
 	Scene* scene_;
+
+	Player player_;
 
 	int offset_x_;
 	int offset_y_;

@@ -1,14 +1,15 @@
 #include "input_handler.h"
-#include "test_command.h"
+#include "move_commands.h"
+#include "player.h"
 
-InputHandler::InputHandler(sf::RenderWindow* window, Camera* camera) {
+InputHandler::InputHandler(sf::RenderWindow* window, Player* player) {
 	window_ = window;
-	camera_ = camera;
+	player_ = player;
 
-	move_up_ = new TestCommand();
-	move_left_ = new TestCommand();
-	move_down_ = new TestCommand();
-	move_right_ = new TestCommand();
+	move_up_ = new MoveUpCommand();
+	move_left_ = new MoveLeftCommand();
+	move_down_ = new MoveDownCommand();
+	move_right_ = new MoveRightCommand();
 }
 
 InputHandler::~InputHandler() {
@@ -28,19 +29,19 @@ void InputHandler::HandleInput() {
 
 		if (event.type == sf::Event::KeyPressed) {
 			if (event.key.code == sf::Keyboard::W) {
-				move_up_->Execute(*camera_);
+				move_up_->Execute(*player_);
 			}
 
 			if (event.key.code == sf::Keyboard::A) {
-				move_left_->Execute(*camera_);
+				move_left_->Execute(*player_);
 			}
 
 			if (event.key.code == sf::Keyboard::S) {
-				move_down_->Execute(*camera_);
+				move_down_->Execute(*player_);
 			}
 
 			if (event.key.code == sf::Keyboard::D) {
-				move_right_->Execute(*camera_);
+				move_right_->Execute(*player_);
 			}
 		}
 	}
