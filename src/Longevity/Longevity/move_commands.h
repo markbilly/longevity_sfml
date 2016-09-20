@@ -5,22 +5,22 @@
 
 class MoveUpCommand : public Command {
 public:
-	virtual void Execute(Entity& entity);
+	virtual void Execute(Player& entity);
 };
 
 class MoveLeftCommand : public Command {
 public:
-	virtual void Execute(Entity& entity);
+	virtual void Execute(Player& entity);
 };
 
 class MoveDownCommand : public Command {
 public:
-	virtual void Execute(Entity& entity);
+	virtual void Execute(Player& entity);
 };
 
 class MoveRightCommand : public Command {
 public:
-	virtual void Execute(Entity& entity);
+	virtual void Execute(Player& entity);
 };
 
 #endif

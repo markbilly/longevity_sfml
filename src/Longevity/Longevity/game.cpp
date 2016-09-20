@@ -21,6 +21,7 @@ Game::Game() {
 	scene_loader.Load("test_map.txt", *scene_);
 	sf::IntRect scene_size = scene_->GetSizeInPixels();
 	camera_->SetBoundary(scene_size.width, scene_size.height);
+	scene_->AddEntity(&player_);
 }
 
 Game::~Game() {
@@ -39,6 +40,7 @@ void Game::ProcessInput() {
 }
 
 void Game::Update() {
+	scene_->Update();
 	camera_->Update();
 }
 

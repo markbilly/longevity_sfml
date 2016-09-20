@@ -8,3 +8,10 @@ Player::Player() {
 
 Player::~Player() {
 }
+
+void Player::Move(int offset_x, int offset_y) {
+	// move bounding box
+	sf::Vector2f start_position = bounding_box_.getPosition();
+	sf::Vector2f new_position = start_position + sf::Vector2f((float)offset_x, (float)offset_y);
+	bounding_box_.setPosition(new_position);
+}

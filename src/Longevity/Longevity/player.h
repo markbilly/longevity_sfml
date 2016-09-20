@@ -8,6 +8,7 @@ class Player : public Entity {
 public:
 	Player();
 	~Player();
+	void Move(int offset_x, int offset_y);
 };
 
 #endif

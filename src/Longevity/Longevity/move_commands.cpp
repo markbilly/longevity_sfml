@@ -1,18 +1,18 @@
 #include "move_commands.h"
-#include "entity.h"
+#include "player.h"
 
-void MoveUpCommand::Execute(Entity& entity) {
+void MoveUpCommand::Execute(Player& entity) {
 	entity.Move(0, -1);
 }
 
-void MoveLeftCommand::Execute(Entity& entity) {
+void MoveLeftCommand::Execute(Player& entity) {
 	entity.Move(-1, 0);
 }
 
-void MoveDownCommand::Execute(Entity& entity) {
+void MoveDownCommand::Execute(Player& entity) {
 	entity.Move(0, 1);
 }
 
-void MoveRightCommand::Execute(Entity& entity) {
+void MoveRightCommand::Execute(Player& entity) {
 	entity.Move(1, 0);
 }

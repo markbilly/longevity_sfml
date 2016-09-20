@@ -32,6 +32,23 @@ void Scene::Render(sf::RenderWindow* window) {
 	}
 }
 
+void Scene::Update() {
+	// entities
+	for (int i = 0; i < entities_.size(); i++) {
+		// apply gravity
+		entities_[i]->SetVelocity(sf::Vector2f(0.0f, 1.0f));
+
+		// box collision
+
+		// update
+		entities_[i]->Update();
+	}
+}
+
+void Scene::AddEntity(Entity* entity) {
+	entities_.push_back(entity);
+}
+
 std::map<std::string, std::string>* Scene::GetAttributes() {
 	return attributes_;
 }

@@ -5,13 +5,19 @@
 
 class Entity {
 public:
-	void Move(int offset_x, int offset_y);
 	sf::Vector2f GetPosition();
+	bool IsCollision(sf::IntRect other_shape_bounds);
+	void SetVelocity(sf::Vector2f velocity);
+
+	void Update();
 	void Render(sf::RenderWindow* window);
-	sf::RectangleShape bounding_box_;
 protected:
 	Entity();
 	sf::Sprite sprite_;
+	sf::RectangleShape bounding_box_;
+
+	// pixels per frame
+	sf::Vector2f velocity_;
 };
 
 #endif

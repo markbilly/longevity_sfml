@@ -1,12 +1,12 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include "entity.h"
+#include "player.h"
 
 class Command {
 public:
 	virtual ~Command() {}
-	virtual void Execute(Entity& entity) = 0;
+	virtual void Execute(Player& entity) = 0;
 };
 
 #endif
