@@ -25,7 +25,7 @@ void Scene::Render(sf::RenderWindow* window) {
 				window->draw(sprite);
 			}
 
-			pos[0] += 16;			
+			pos[0] += 16;
 		}
 		pos[0] = 0;
 		pos[1] += 16;
@@ -35,10 +35,28 @@ void Scene::Render(sf::RenderWindow* window) {
 void Scene::Update() {
 	// entities
 	for (int i = 0; i < entities_.size(); i++) {
-		// apply gravity
+		// apply shit gravity
 		entities_[i]->SetVelocity(sf::Vector2f(0.0f, 1.0f));
 
-		// box collision
+		// apply shit collision	
+		int total_rows = tile_map_->size();
+		int total_cols = tile_map_->at(0)->size();
+		int pos[2] = { 0, 0 };
+
+		for (int row = 0; row < total_rows; row++) {
+			for (int col = 0; col < total_cols; col++) {
+
+				if (tile_map_->at(row)->at(col) > 0) {
+					if (entities_[i]->IsCollision(sf::FloatRect(pos[0], pos[1], 16, 16))) {
+						entities_[i]->SetVelocity(sf::Vector2f(0.0f, 0.0f));
+					}
+				}
+
+				pos[0] += 16;
+			}
+			pos[0] = 0;
+			pos[1] += 16;
+		}
 
 		// update
 		entities_[i]->Update();

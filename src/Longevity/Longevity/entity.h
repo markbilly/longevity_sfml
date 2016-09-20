@@ -6,7 +6,7 @@
 class Entity {
 public:
 	sf::Vector2f GetPosition();
-	bool IsCollision(sf::IntRect other_shape_bounds);
+	bool IsCollision(sf::FloatRect other_shape_bounds);
 	void SetVelocity(sf::Vector2f velocity);
 
 	void Update();

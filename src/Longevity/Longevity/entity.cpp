@@ -23,8 +23,9 @@ void Entity::Render(sf::RenderWindow* window) {
 	window->draw(bounding_box_); // TODO: replace with draw sprite
 }
 
-bool Entity::IsCollision(sf::IntRect other_shape_bounds) {
-	return bounding_box_.getTextureRect().intersects(other_shape_bounds);
+bool Entity::IsCollision(sf::FloatRect other_shape_bounds) {
+	sf::FloatRect entity_bounds = bounding_box_.getGlobalBounds();
+	return entity_bounds.intersects(other_shape_bounds);
 }
 
 void Entity::SetVelocity(sf::Vector2f velocity) {
