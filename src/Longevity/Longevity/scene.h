@@ -23,6 +23,9 @@ private:
 	TextureFactory* texture_factory_;
 	std::map<std::string, std::string>* attributes_;
 	std::vector<Entity*> entities_;
+
+	int GetTotalMapRows();
+	int GetTotalMapCols();
 };
 
 #endif
