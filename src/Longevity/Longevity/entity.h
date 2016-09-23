@@ -9,9 +9,11 @@ public:
 	Entity();
 	~Entity();
 
+	sf::Vector2f GetVelocity();
 	sf::Vector2f GetPosition();
 	bool IsCollision(sf::FloatRect other_shape_bounds);
 	void SetVelocity(sf::Vector2f velocity);
+	void SetPosition(sf::Vector2f position);
 	sf::FloatRect GetBounds();
 
 	void Update();

@@ -12,6 +12,10 @@ Entity::Entity() {
 Entity::~Entity() {
 }
 
+sf::Vector2f Entity::GetVelocity() {
+	return velocity_;
+}
+
 sf::Vector2f Entity::GetPosition() {
 	return bounding_box_->getPosition();
 }
@@ -41,6 +45,10 @@ bool Entity::IsCollision(sf::FloatRect other_shape_bounds) {
 
 void Entity::SetVelocity(sf::Vector2f velocity) {
 	velocity_ = velocity;
+}
+
+void Entity::SetPosition(sf::Vector2f position) {
+	bounding_box_->setPosition(position);
 }
 
 sf::FloatRect Entity::GetBounds() {
